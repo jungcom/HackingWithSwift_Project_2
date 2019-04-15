@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     var countries = [String]()
     var score = 0
     var correctAnswer = 0
+    var questionsAsked = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,30 +48,48 @@ class ViewController: UIViewController {
     }
     
     func askQuestion(){
+        questionsAsked += 1
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
-        navigationItem.title = countries[correctAnswer].uppercased()
+        navigationItem.title = "\(countries[correctAnswer].uppercased()) Your Score : \(score)"
         
         buttonOne.setImage(UIImage(named: countries[0]), for: .normal)
         buttonTwo.setImage(UIImage(named: countries[1]), for: .normal)
         buttonThree.setImage(UIImage(named: countries[2]), for: .normal)
         
+        
     }
 
     @IBAction func buttonTapped(_ sender: UIButton) {
+        
         var title: String
+        var message: String
+        
+        if questionsAsked == 10{
+            title = "Final Score"
+            let ac = UIAlertController(title: title, message: "Your score is \(score) of out 10", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "Dismiss", style: .cancel) { (_) in
+            }
+            ac.addAction(alertAction)
+            present(ac, animated: true, completion: nil)
+            return
+        }
+        
         if sender.tag == correctAnswer{
             title = "Correct"
+            message = "Your score is \(score)"
             score += 1
         } else {
             title = "Incorrect"
+            message = "Wrong! That is the flag of \(countries[sender.tag].uppercased())"
             score -= 1
         }
         
-        let ac = UIAlertController(title: title, message: "Your score is \(score)", preferredStyle: .alert)
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "Continue", style: .default) { (_) in
             self.askQuestion()
         }
+        
         ac.addAction(alertAction)
         present(ac, animated: true, completion: nil)
     }
