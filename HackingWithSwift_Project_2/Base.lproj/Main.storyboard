@@ -18,6 +18,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMA-wH-Xub">
+                                <rect key="frame" x="107" y="100" width="200" height="100"/>
+                                <state key="normal" image="us"/>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kUz-Gf-3KI"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MaG-JO-nVJ">
                                 <rect key="frame" x="107" y="230" width="200" height="100"/>
                                 <state key="normal" image="italy"/>
@@ -32,22 +39,41 @@
                                     <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="F1t-sr-3iW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMA-wH-Xub">
-                                <rect key="frame" x="107" y="100" width="200" height="100"/>
-                                <state key="normal" image="us"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Prh-xo-gUN">
+                                <rect key="frame" x="130.5" y="522" width="153" height="62"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="153" id="CRt-Hf-6fS"/>
+                                    <constraint firstAttribute="height" constant="62" id="ooB-RX-tfK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yew-9K-EfF">
+                                <rect key="frame" x="127.5" y="736" width="159" height="84"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="159" id="h0b-82-dBd"/>
+                                    <constraint firstAttribute="height" constant="84" id="vId-u2-hPc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Restart"/>
                                 <connections>
-                                    <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kUz-Gf-3KI"/>
+                                    <action selector="restartTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3RU-LJ-D4k"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="UMA-wH-Xub" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="12" id="6Cp-Uf-TzH"/>
+                            <constraint firstItem="Prh-xo-gUN" firstAttribute="top" secondItem="hqc-6o-LYc" secondAttribute="bottom" constant="62" id="bae-JJ-lGC"/>
                             <constraint firstItem="hqc-6o-LYc" firstAttribute="top" secondItem="MaG-JO-nVJ" secondAttribute="bottom" constant="30" id="dia-Ml-HbS"/>
                             <constraint firstItem="UMA-wH-Xub" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="eXJ-QG-rW9"/>
                             <constraint firstItem="MaG-JO-nVJ" firstAttribute="top" secondItem="UMA-wH-Xub" secondAttribute="bottom" constant="30" id="j80-Ac-mkz"/>
+                            <constraint firstItem="Prh-xo-gUN" firstAttribute="centerX" secondItem="hqc-6o-LYc" secondAttribute="centerX" id="nFd-Uc-hmP"/>
+                            <constraint firstItem="Yew-9K-EfF" firstAttribute="top" secondItem="hqc-6o-LYc" secondAttribute="bottom" constant="276" id="oJn-ym-W3p"/>
                             <constraint firstItem="hqc-6o-LYc" firstAttribute="centerX" secondItem="MaG-JO-nVJ" secondAttribute="centerX" id="t9R-EA-qD9"/>
                             <constraint firstItem="MaG-JO-nVJ" firstAttribute="centerX" secondItem="UMA-wH-Xub" secondAttribute="centerX" id="vTK-Q9-U5l"/>
+                            <constraint firstItem="Yew-9K-EfF" firstAttribute="centerX" secondItem="hqc-6o-LYc" secondAttribute="centerX" id="xuK-IT-bNY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -56,11 +82,13 @@
                         <outlet property="buttonOne" destination="UMA-wH-Xub" id="wm8-ly-TgA"/>
                         <outlet property="buttonThree" destination="hqc-6o-LYc" id="bdE-Vo-3zL"/>
                         <outlet property="buttonTwo" destination="MaG-JO-nVJ" id="BjR-VR-cSK"/>
+                        <outlet property="restartButton" destination="Yew-9K-EfF" id="hCV-56-DQz"/>
+                        <outlet property="scoreLabel" destination="Prh-xo-gUN" id="E4O-wb-4v6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1145" y="114"/>
+            <point key="canvasLocation" x="1144.9275362318842" y="113.83928571428571"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NuH-t1-ljv">

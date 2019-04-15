@@ -13,6 +13,9 @@ class ViewController: UIViewController {
     @IBOutlet var buttonOne: UIButton!
     @IBOutlet var buttonTwo: UIButton!
     @IBOutlet var buttonThree: UIButton!
+    @IBOutlet var scoreLabel: UILabel!
+    
+    @IBOutlet var restartButton: UIButton!
     
     var countries = [String]()
     var score = 0
@@ -51,7 +54,8 @@ class ViewController: UIViewController {
         questionsAsked += 1
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
-        navigationItem.title = "\(countries[correctAnswer].uppercased()) Your Score : \(score)"
+        navigationItem.title = "\(countries[correctAnswer].uppercased())"
+        scoreLabel.text = "Your Score : \(score)"
         
         buttonOne.setImage(UIImage(named: countries[0]), for: .normal)
         buttonTwo.setImage(UIImage(named: countries[1]), for: .normal)
@@ -72,13 +76,14 @@ class ViewController: UIViewController {
             }
             ac.addAction(alertAction)
             present(ac, animated: true, completion: nil)
+            score = 0
             return
         }
         
         if sender.tag == correctAnswer{
             title = "Correct"
-            message = "Your score is \(score)"
             score += 1
+            message = "Your score is \(score)"
         } else {
             title = "Incorrect"
             message = "Wrong! That is the flag of \(countries[sender.tag].uppercased())"
@@ -94,6 +99,11 @@ class ViewController: UIViewController {
         present(ac, animated: true, completion: nil)
     }
     
+    @IBAction func restartTapped(_ sender: UIButton) {
+        score = 0
+        questionsAsked = 0
+        askQuestion()
+    }
     
 }
 
